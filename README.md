@@ -1,1 +1,1 @@
-## TypeScript Base Settings
+## 도서 API를 이용한 도서 검색 사이트 (2022.09.02 ~)
