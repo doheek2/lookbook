@@ -1,0 +1,55 @@
+@use '/src/styles/constants/colors';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background-color: colors.$BAR;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+@media screen and (max-width: 625px) {
+  .menuBtn {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+
+  .modeBtn {
+    margin-top: 5px;
+    margin-right: 17px;
+
+    .brightBtn {
+      width: 27px;
+      height: 27px;
+    }
+
+    .darkBtn {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .menuBtn {
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+  }
+
+  .brightBtn {
+    width: 38px;
+    height: 38px;
+    margin-right: 20px;
+  }
+
+  .darkBtn {
+    width: 36px;
+    height: 36px;
+    margin-right: 20px;
+  }
+}
