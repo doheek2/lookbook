@@ -1,5 +1,6 @@
 import { debounce } from 'lodash'
 import { ChangeEvent, useCallback, useState } from 'react'
+
 import { IKakaoAPI } from 'types/lookbook'
 import { getBookList } from 'utils/api'
 
@@ -26,8 +27,6 @@ const Main = () => {
     [books]
   )
 
-  console.log(books)
-
   const searchBookHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.currentTarget.value)
     if (query.length > 0) getbookAPIHandler(query, true)
@@ -38,7 +37,7 @@ const Main = () => {
       <Bar />
       <main>
         <section>
-          <form>
+          <form className={styles.form}>
             <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
             <button type='submit'>검색</button>
           </form>

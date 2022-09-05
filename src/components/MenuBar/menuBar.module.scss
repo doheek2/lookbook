@@ -1,0 +1,25 @@
+@use '/src/styles/constants/colors';
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: colors.$BLACK;
+  opacity: 0.75;
+}
+
+.menuContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 180px;
+  height: 100vh;
+  overflow: hidden;
+  background-color: colors.$WHITE1;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
