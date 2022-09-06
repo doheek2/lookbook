@@ -1,5 +1,5 @@
 import { debounce } from 'lodash'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 
 import { IKakaoAPI } from 'types/lookbook'
 import { getBookList } from 'utils/api'
@@ -29,12 +29,16 @@ const Main = () => {
 
   const searchBookHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.currentTarget.value)
-    if (query.length > 0) getbookAPIHandler(query, true)
   }
+
+  useEffect(() => {
+    if (query.length > 0) getbookAPIHandler(query, true)
+  }, [getbookAPIHandler, query])
 
   return (
     <div className={styles.container}>
       <Bar />
+      <div className={styles.box} />
       <main>
         <section>
           <form className={styles.form}>

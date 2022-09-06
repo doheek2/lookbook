@@ -1,12 +1,15 @@
 @use '/src/styles/constants/colors';
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
 
+@media screen and (max-width: 625px) {
   .form {
     display: flex;
     align-items: center;
@@ -29,6 +32,44 @@
       color: colors.$WHITE;
       background-color: colors.$GREEN1;
       border-radius: 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .box {
+    position: absolute;
+    right: 0;
+    z-index: -9999;
+    width: 80vw;
+    height: 400px;
+    background-color: colors.$BAR;
+    border-bottom-left-radius: 60px;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 50px;
+    margin-top: 15px;
+    background-color: colors.$WHITE;
+    border-radius: 20px;
+
+    input {
+      width: 35vw;
+      height: 30px;
+      margin: 0 3vw;
+    }
+
+    button {
+      width: 70px;
+      height: 30px;
+      margin-right: 1vw;
+      color: colors.$WHITE;
+      background-color: colors.$GREEN1;
+      border-radius: 20px;
     }
   }
 }
