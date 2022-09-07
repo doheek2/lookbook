@@ -1,5 +1,12 @@
+import Bar from 'components/Bar'
+
 const LookBook = () => {
-  return <p>LookBook</p>
+  return (
+    <div>
+      <Bar />
+      <p>LookBook</p>
+    </div>
+  )
 }
 
 export default LookBook

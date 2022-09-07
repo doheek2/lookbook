@@ -1,5 +1,12 @@
+import Bar from 'components/Bar'
+
 const BookDiary = () => {
-  return <p>BookDiary</p>
+  return (
+    <div>
+      <Bar />
+      <p>BookDiary</p>
+    </div>
+  )
 }
 
 export default BookDiary

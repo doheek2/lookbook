@@ -10,6 +10,10 @@
 }
 
 @media screen and (max-width: 625px) {
+  .sideBarContainer {
+    display: none;
+  }
+
   .form {
     display: flex;
     align-items: center;
@@ -37,11 +41,21 @@
 }
 
 @media screen and (min-width: 625px) {
+  .sideBarContainer {
+    position: absolute;
+    left: 0;
+    width: 15vw;
+    min-width: 250px;
+    height: 100vh;
+    background-color: colors.$WHITE;
+  }
+
   .box {
     position: absolute;
     right: 0;
     z-index: -9999;
-    width: 80vw;
+    width: 75vw;
+    min-width: 500px;
     height: 400px;
     background-color: colors.$BAR;
     border-bottom-left-radius: 60px;

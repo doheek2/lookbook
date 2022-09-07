@@ -16,10 +16,16 @@
   top: 0;
   left: 0;
   z-index: 100;
-  width: 180px;
+  width: 70vw;
   height: 100vh;
   overflow: hidden;
-  background-color: colors.$WHITE1;
+  background-color: colors.$WHITE;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: colors.$BLACK1;
+  }
 }

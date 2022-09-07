@@ -6,6 +6,7 @@ import { getBookList } from 'utils/api'
 
 import Bar from 'components/Bar'
 import styles from './main.module.scss'
+import Menu from 'components/Menu'
 
 const Main = () => {
   const [books, setBooks] = useState<IKakaoAPI>([])
@@ -38,6 +39,9 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <Bar />
+      <nav className={styles.sideBarContainer}>
+        <Menu />
+      </nav>
       <div className={styles.box} />
       <main>
         <section>
