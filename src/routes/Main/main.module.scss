@@ -1,15 +1,24 @@
 @use '/src/styles/constants/colors';
 
 .container {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
   height: 100vh;
+
+  .bookListContainer {
+    display: grid;
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 625px) {
+  .container {
+    position: relative;
+  }
+
   .sideBarContainer {
     display: none;
   }
@@ -38,6 +47,11 @@
       border-radius: 30px;
     }
   }
+
+  .bookListContainer {
+    grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
+    grid-gap: 20px;
+  }
 }
 
 @media screen and (min-width: 625px) {
@@ -47,7 +61,6 @@
     width: 15vw;
     min-width: 250px;
     height: 100vh;
-    background-color: colors.$WHITE;
   }
 
   .box {

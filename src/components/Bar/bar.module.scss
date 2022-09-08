@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: 80px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
 
@@ -18,12 +17,17 @@
 
 @media screen and (max-width: 625px) {
   .header {
+    height: 80px;
     background-color: colors.$BAR;
 
     .menuBtn {
       width: 30px;
       height: 30px;
       margin-left: 15px;
+    }
+
+    .name {
+      font-size: 20px;
     }
 
     .modeBtn {
@@ -42,33 +46,34 @@
       }
     }
   }
-
-  .name {
-    font-size: 20px;
-  }
 }
 
 @media screen and (min-width: 625px) {
-  .menuBtnWrapper {
-    display: none;
-  }
+  .header {
+    height: 80px;
+    margin: 20px 0;
 
-  .brightBtn {
-    width: 38px;
-    height: 38px;
-    margin-right: 20px;
-  }
+    .menuBtnWrapper {
+      display: none;
+    }
 
-  .darkBtn {
-    width: 36px;
-    height: 36px;
-    margin-right: 20px;
-  }
+    .name {
+      z-index: 9999;
+      margin-left: 20px;
+      font-size: 25px;
+    }
 
-  .name {
-    z-index: 9999;
-    margin-left: 20px;
-    font-size: 25px;
+    .brightBtn {
+      width: 38px;
+      height: 38px;
+      margin-right: 20px;
+    }
+
+    .darkBtn {
+      width: 36px;
+      height: 36px;
+      margin-right: 20px;
+    }
   }
 
   .menuBarContainer {

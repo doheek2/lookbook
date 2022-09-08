@@ -1,5 +1,5 @@
 import { debounce } from 'lodash'
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { IKakaoAPI } from 'types/lookbook'
 import { getBookList } from 'utils/api'
@@ -13,9 +13,9 @@ const Main = () => {
   const [query, setQuery] = useState('')
 
   const getbookAPIHandler = useCallback(
-    async (query: string, reset: boolean) => {
+    async (searchText: string, reset: boolean) => {
       const params = {
-        query,
+        query: searchText,
         sort: 'accuracy',
         page: 1,
         size: 10,
@@ -28,8 +28,12 @@ const Main = () => {
     [books]
   )
 
+  const debouncedSearch = debounce((searchText: string) => {
+    setQuery(searchText)
+  }, 200)
+
   const searchBookHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.currentTarget.value)
+    debouncedSearch(e.currentTarget.value)
   }
 
   useEffect(() => {
