@@ -1,5 +1,5 @@
 import { debounce } from 'lodash'
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'
+import { ChangeEvent, useMemo, useState } from 'react'
 
 import { IKakaoAPI } from 'types/lookbook'
 import { getBookList } from 'utils/api'
@@ -12,33 +12,30 @@ const Main = () => {
   const [books, setBooks] = useState<IKakaoAPI>([])
   const [query, setQuery] = useState('')
 
-  const getbookAPIHandler = useCallback(
-    async (searchText: string, reset: boolean) => {
+  useMemo(async () => {
+    if (query.length > 0) {
       const params = {
-        query: searchText,
+        query,
         sort: 'accuracy',
         page: 1,
         size: 10,
       }
 
       const { data } = await getBookList(params)
-      if (reset) setBooks(data.documents)
-      else setBooks(books.concat(data.documents))
-    },
-    [books]
-  )
+      if (books.length === 0) setBooks(data.documents)
+      // else setBooks(books.concat(data.documents))
+    }
+  }, [books, query])
 
   const debouncedSearch = debounce((searchText: string) => {
     setQuery(searchText)
-  }, 200)
+  }, 300)
 
   const searchBookHandler = (e: ChangeEvent<HTMLInputElement>) => {
     debouncedSearch(e.currentTarget.value)
   }
 
-  useEffect(() => {
-    if (query.length > 0) getbookAPIHandler(query, true)
-  }, [getbookAPIHandler, query])
+  console.log(books)
 
   return (
     <div className={styles.container}>
@@ -48,22 +45,24 @@ const Main = () => {
       </nav>
       <div className={styles.box} />
       <main>
-        <section>
+        <section className={styles.formContainer}>
           <form className={styles.form}>
             <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
             <button type='submit'>검색</button>
           </form>
-          {books.length === 0 && <p>데이터가 없습니다.</p>}
-          {books.length !== 0 &&
-            books.map((v, i) => {
-              const key = `books-${i}`
-              return (
-                <div key={key}>
-                  <img src={v.thumbnail} alt={v.title} />
-                  <p>{v.title}</p>
-                </div>
-              )
-            })}
+          <article className={styles.bookListContainer}>
+            {books.length === 0 && <p>데이터가 없습니다.</p>}
+            {books.length !== 0 &&
+              books.map((v, i) => {
+                const key = `books-${i}`
+                return (
+                  <div key={key}>
+                    <img src={v.thumbnail} alt={v.title} />
+                    <p>{v.title}</p>
+                  </div>
+                )
+              })}
+          </article>
         </section>
       </main>
     </div>
