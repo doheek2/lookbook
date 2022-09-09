@@ -7,6 +7,13 @@
   width: 100vw;
   height: 100vh;
 
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+
   .bookListContainer {
     display: grid;
     grid-gap: 20px;
@@ -23,12 +30,14 @@
     display: none;
   }
 
-  .form {
+  .formContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+
+  .form {
     width: 90vw;
-    height: 50px;
     margin-top: 15px;
     background-color: colors.$GRAY1;
     border-radius: 30px;
@@ -50,7 +59,7 @@
 
   .bookListContainer {
     grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
-    grid-gap: 20px;
+    width: 80vw;
   }
 }
 
@@ -75,17 +84,13 @@
   }
 
   .form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40vw;
-    height: 50px;
-    margin-top: 15px;
+    width: 55vw;
+    margin: 15px 0 0 250px;
     background-color: colors.$WHITE;
     border-radius: 20px;
 
     input {
-      width: 35vw;
+      width: 50vw;
       height: 30px;
       margin: 0 3vw;
     }
@@ -98,5 +103,11 @@
       background-color: colors.$GREEN1;
       border-radius: 20px;
     }
+  }
+
+  .bookListContainer {
+    grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
+    width: 70vw;
+    margin-left: 180px;
   }
 }
