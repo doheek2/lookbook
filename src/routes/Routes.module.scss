@@ -1,7 +1,13 @@
 @use '/src/styles/constants/colors';
 
-.app {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (min-width: 625px) {
+  .container {
+    background-color: colors.$BACKGROUND;
+  }
 }
