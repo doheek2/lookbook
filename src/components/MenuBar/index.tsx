@@ -14,7 +14,7 @@ const MenuBar = () => {
         <button type='button' className={styles.backdrop} onClick={closeMenuHandler} aria-hidden />
       </div>
       <div className={styles.menuContainer}>
-        <Menu />
+        <Menu isMobile />
       </div>
     </>
   )
