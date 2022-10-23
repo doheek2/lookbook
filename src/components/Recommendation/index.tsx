@@ -1,13 +1,14 @@
 import useRecommendationQueries from 'hooks/useRecommendationQueries'
+import styles from './recommendation.module.scss'
 
 const Recommendation = () => {
   const booksData = useRecommendationQueries()
   const isSuccess = booksData.some((result) => result.isSuccess)
 
   return (
-    <section>
-      <p>Front-end 책 추천</p>
-      <article>
+    <section className={styles.recommendationContainer}>
+      <p className={styles.title}>Front-end 책 추천</p>
+      <article className={styles.bookListContainer}>
         {isSuccess &&
           booksData.map((v, i) => {
             const key = `recommendation${i}`

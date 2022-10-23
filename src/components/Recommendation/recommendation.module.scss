@@ -1,1 +1,14 @@
 @use '/src/styles/constants/colors';
+
+.recommendationContainer {
+  width: 100vw;
+}
+
+@media screen and (min-width: 625px) {
+  .recommendationContainer {
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}
