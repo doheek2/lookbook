@@ -1,111 +1,96 @@
 @use '/src/styles/constants/colors';
 
-.container {
+.form {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  justify-content: center;
+  height: 50px;
+}
 
-  .form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
+.bookListContainer {
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 20px;
+
+  img {
+    margin-left: 10px;
   }
 
-  .bookListContainer {
-    display: grid;
-    grid-gap: 20px;
-    margin-top: 20px;
-
-    img {
-      margin-left: 10px;
-    }
-
-    p {
-      margin-top: 10px;
-      text-align: center;
-    }
+  p {
+    margin-top: 10px;
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 625px) {
-  .container {
-    position: relative;
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .sideBarContainer {
-      display: none;
+    .form {
+      width: 90vw;
+      margin-top: 15px;
+      background-color: colors.$GRAY1;
+      border-radius: 30px;
+
+      input {
+        width: 60vw;
+        height: 30px;
+        margin: 0 5vw;
+      }
+
+      button {
+        width: 15vw;
+        height: 30px;
+        color: colors.$WHITE;
+        background-color: colors.$GREEN1;
+        border-radius: 30px;
+      }
     }
 
-    .formContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .form {
-        width: 90vw;
-        margin-top: 15px;
-        background-color: colors.$GRAY1;
-        border-radius: 30px;
-
-        input {
-          width: 60vw;
-          height: 30px;
-          margin: 0 5vw;
-        }
-
-        button {
-          width: 15vw;
-          height: 30px;
-          color: colors.$WHITE;
-          background-color: colors.$GREEN1;
-          border-radius: 30px;
-        }
-      }
-
-      .bookListContainer {
-        grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
-        width: 80vw;
-      }
+    .bookListContainer {
+      grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
+      width: 80vw;
     }
   }
 }
 
 @media screen and (min-width: 625px) {
-  .sideBarContainer {
+  .mainContainer {
     position: absolute;
-    left: 0;
-    width: 15vw;
-    min-width: 250px;
-    height: 100vh;
-  }
+    left: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 
-  .form {
-    width: 55vw;
-    margin: 15px 0 0 250px;
-    background-color: colors.$WHITE;
-    border-radius: 20px;
-
-    input {
-      width: 50vw;
-      height: 30px;
-      margin: 0 3vw;
-    }
-
-    button {
-      width: 70px;
-      height: 30px;
-      margin-right: 1vw;
-      color: colors.$WHITE;
-      background-color: colors.$GREEN1;
+    .form {
+      width: 55vw;
+      margin-top: 15px;
+      background-color: colors.$WHITE;
       border-radius: 20px;
-    }
-  }
 
-  .bookListContainer {
-    grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
-    width: 70vw;
-    margin-left: 180px;
+      input {
+        width: 50vw;
+        height: 30px;
+        margin: 0 3vw;
+      }
+
+      button {
+        width: 70px;
+        height: 30px;
+        margin-right: 1vw;
+        color: colors.$WHITE;
+        background-color: colors.$GREEN1;
+        border-radius: 20px;
+      }
+    }
+
+    .bookListContainer {
+      grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
+      width: 70vw;
+      margin-left: 180px;
+    }
   }
 }
