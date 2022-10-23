@@ -40,12 +40,42 @@
 }
 
 @media screen and (max-width: 625px) {
+  .name {
+    display: none;
+  }
+
   .menuContainer {
     margin-top: 60px;
   }
+
+  .darkModeBtnContainer {
+    display: none;
+  }
 }
+
 @media screen and (min-width: 625px) {
-  .menuContainer {
-    margin-top: 95px;
+  .sideBarContainer {
+    position: relative;
+    width: 15vw;
+    min-width: 250px;
+    min-height: 95vh;
+
+    .name {
+      margin: 40px 0 0 20px;
+      font-family: Montserrat, sans-serif;
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .menuContainer {
+      margin-top: 20px;
+    }
+
+    .darkModeBtnContainer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
   }
 }
