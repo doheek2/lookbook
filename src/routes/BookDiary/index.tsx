@@ -1,11 +1,10 @@
-import Bar from 'components/Bar'
+import Container from 'components/Container'
 
 const BookDiary = () => {
   return (
-    <div>
-      <Bar />
-      <p>BookDiary</p>
-    </div>
+    <Container>
+      <p>Favorites</p>
+    </Container>
   )
 }
 

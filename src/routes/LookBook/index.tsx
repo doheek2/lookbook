@@ -1,11 +1,11 @@
-import Bar from 'components/Bar'
+import Container from 'components/Container'
+import styles from './lookbook.module.scss'
 
 const LookBook = () => {
   return (
-    <div>
-      <Bar />
-      <p>LookBook</p>
-    </div>
+    <Container>
+      <p>lookbook</p>
+    </Container>
   )
 }
 
