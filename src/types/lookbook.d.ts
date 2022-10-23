@@ -6,7 +6,7 @@ export interface IAPIParams {
 }
 
 interface IKakaoProps {
-  authors: [string]
+  authors: string[]
   contents: string
   datetime: string
   isbn: string
