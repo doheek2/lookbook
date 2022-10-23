@@ -5,7 +5,7 @@ import { storeType } from 'store'
 import { menuActions } from 'store/menu-slice'
 
 import MenuBar from 'components/MenuBar'
-import DarkModeBtn from 'components/darkModeBtn'
+import DarkModeBtn from 'components/DarkModeBtn'
 import styles from './bar.module.scss'
 
 const Bar = () => {
