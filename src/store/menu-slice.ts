@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface IMenuState {
-  isOpen: boolean
+  isMenuOpen: boolean
+  isDarkModeBtnClicked: boolean
 }
 
 const initialState: IMenuState = {
-  isOpen: false,
+  isMenuOpen: false,
+  isDarkModeBtnClicked: false,
 }
 
 const menuSlice = createSlice({
@@ -13,7 +15,10 @@ const menuSlice = createSlice({
   initialState,
   reducers: {
     isOpenMenu: (state) => {
-      state.isOpen = !state.isOpen
+      state.isMenuOpen = !state.isMenuOpen
+    },
+    isDarkModeBtnClicked: (state) => {
+      state.isDarkModeBtnClicked = !state.isDarkModeBtnClicked
     },
   },
 })
