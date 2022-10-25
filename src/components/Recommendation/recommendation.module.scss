@@ -2,13 +2,57 @@
 
 .recommendationContainer {
   width: 100vw;
+
+  .bookListContainer {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .recommendationContainer {
+    width: 90vw;
+    margin-top: 15px;
+
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 }
 
 @media screen and (min-width: 625px) {
   .recommendationContainer {
+    margin-top: 20px;
+
     .title {
       font-size: 18px;
       font-weight: 500;
+    }
+
+    .bookListContainer {
+      margin-top: 20px;
+
+      .data {
+        width: 170px;
+
+        img {
+          width: 145px;
+          border-radius: 10px;
+        }
+
+        .metaData {
+          p {
+            width: 140px;
+            margin-top: 3px;
+            font-weight: 500;
+            color: colors.$GRAY4;
+          }
+
+          .bookTitle {
+            color: colors.$BLACK;
+          }
+        }
+      }
     }
   }
 }
