@@ -62,12 +62,11 @@
     left: 250px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
 
     .form {
       width: 55vw;
-      margin-top: 15px;
+      margin-top: 20px;
       background-color: colors.$WHITE;
       border-radius: 20px;
 
@@ -90,7 +89,6 @@
     .bookListContainer {
       grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
       width: 70vw;
-      margin-left: 180px;
     }
   }
 }

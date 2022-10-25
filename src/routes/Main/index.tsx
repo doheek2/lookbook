@@ -1,11 +1,9 @@
 import { debounce } from 'lodash'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 import { IKakaoAPI } from 'types/lookbook'
 import useKeywordQuery from 'hooks/useKeywordQuery'
 
-import Bar from 'components/Bar'
-import Menu from 'components/Menu'
 import Recommendation from 'components/Recommendation'
 
 import styles from './main.module.scss'
@@ -29,10 +27,14 @@ const Main = () => {
     debouncedSearch(e.currentTarget.value)
   }
 
+  const formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
+
   return (
     <Container>
       <main className={styles.mainContainer}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={formSubmitHandler}>
           <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
           <button type='submit'>검색</button>
         </form>
