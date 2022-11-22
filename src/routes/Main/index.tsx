@@ -1,5 +1,5 @@
 import { debounce } from 'lodash'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
 
 import { IKakaoAPI } from 'types/lookbook'
 import useKeywordQuery from 'hooks/useKeywordQuery'
@@ -23,13 +23,16 @@ const Main = () => {
     setQuery(searchText)
   }, 300)
 
-  const searchBookHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    debouncedSearch(e.currentTarget.value)
-  }
+  const searchBookHandler = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      debouncedSearch(e.currentTarget.value)
+    },
+    [debouncedSearch]
+  )
 
-  const formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+  const formSubmitHandler = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-  }
+  }, [])
 
   return (
     <Container>
@@ -38,8 +41,10 @@ const Main = () => {
           <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
           <button type='submit'>검색</button>
         </form>
-        {books.length === 0 && query.length === 0 && <Recommendation />}
-        {books.length === 0 && query.length !== 0 && <p>검색한 책이 없습니다</p>}
+        <Suspense fallback={<div>loading</div>}>
+          {books && query.length === 0 && <Recommendation />}
+          {books.length === 0 && query.length !== 0 && <p>검색한 책이 없습니다</p>}
+        </Suspense>
         <article className={styles.bookListContainer}>
           {books.length !== 0 &&
             books.map((v, i) => {
