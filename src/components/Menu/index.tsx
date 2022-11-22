@@ -1,6 +1,7 @@
-import cx from 'classnames'
+import { useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import cx from 'classnames'
 
 import { FaHome, FaBook, FaHeart } from 'react-icons/fa'
 import { BsFillPeopleFill } from 'react-icons/bs'
@@ -16,9 +17,9 @@ interface IProps {
 const Menu = ({ isMobile }: IProps) => {
   const dispatch = useDispatch()
 
-  const menuBarCloseHandler = () => {
+  const menuBarCloseHandler = useCallback(() => {
     dispatch(menuActions.isOpenMenu())
-  }
+  }, [dispatch])
 
   return (
     <nav className={styles.sideBarContainer}>
