@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiMenu } from 'react-icons/hi'
 
@@ -11,7 +12,9 @@ import styles from './bar.module.scss'
 const Bar = () => {
   const dispatch = useDispatch()
   const isMemuOpen = useSelector((state: storeType) => state.menu.isMenuOpen)
-  const menuBtnClickHandler = () => dispatch(menuActions.isOpenMenu())
+  const menuBtnClickHandler = useCallback(() => {
+    dispatch(menuActions.isOpenMenu())
+  }, [dispatch])
 
   return (
     <>
