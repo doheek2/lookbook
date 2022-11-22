@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { menuActions } from 'store/menu-slice'
 
@@ -6,7 +7,9 @@ import styles from './menuBar.module.scss'
 
 const MenuBar = () => {
   const dispatch = useDispatch()
-  const closeMenuHandler = () => dispatch(menuActions.isOpenMenu())
+  const closeMenuHandler = useCallback(() => {
+    dispatch(menuActions.isOpenMenu())
+  }, [dispatch])
 
   return (
     <>
