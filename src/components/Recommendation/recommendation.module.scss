@@ -1,10 +1,38 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
 
 .recommendationContainer {
   width: 100vw;
 
   .bookListContainer {
     display: flex;
+    width: 90vw;
+    margin-top: 20px;
+
+    .data {
+      img {
+        -webkit-user-drag: none;
+      }
+
+      .metaData {
+        @include flexbox.columnFlexbox(center, start);
+        text-align: start;
+
+        p {
+          margin-top: 3px;
+          font-weight: 500;
+          color: colors.$GRAY4;
+        }
+
+        .bookTitle {
+          color: colors.$BLACK;
+        }
+      }
+    }
+  }
+
+  .scroll {
+    overflow-x: scroll;
   }
 }
 
@@ -16,6 +44,21 @@
     .title {
       font-size: 16px;
       font-weight: 500;
+    }
+
+    .data {
+      width: 150px;
+
+      img {
+        width: 125px;
+        border-radius: 10px;
+      }
+
+      .metaData {
+        p {
+          width: 120px;
+        }
+      }
     }
   }
 }
@@ -29,28 +72,17 @@
       font-weight: 500;
     }
 
-    .bookListContainer {
-      margin-top: 20px;
+    .data {
+      width: 170px;
 
-      .data {
-        width: 170px;
+      img {
+        width: 145px;
+        border-radius: 10px;
+      }
 
-        img {
-          width: 145px;
-          border-radius: 10px;
-        }
-
-        .metaData {
-          p {
-            width: 140px;
-            margin-top: 3px;
-            font-weight: 500;
-            color: colors.$GRAY4;
-          }
-
-          .bookTitle {
-            color: colors.$BLACK;
-          }
+      .metaData {
+        p {
+          width: 140px;
         }
       }
     }
