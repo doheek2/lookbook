@@ -1,9 +1,8 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flexbox.flexbox(between, center);
   width: 100vw;
   height: 60px;
   border-bottom-right-radius: 30px;
