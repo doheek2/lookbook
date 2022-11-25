@@ -1,0 +1,65 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.data {
+  @include flexbox.columnFlexbox(start, center);
+
+  img {
+    border: 1px solid colors.$GRAY1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 10%), 0 0 2px rgba(0, 0, 0, 20%);
+    -webkit-user-drag: none;
+  }
+
+  .metaData {
+    @include flexbox.columnFlexbox(center, start);
+    margin-top: 3px;
+    text-align: start;
+
+    p {
+      margin-top: 3px;
+      font-size: 13px;
+      font-weight: 500;
+      color: colors.$GRAY4;
+    }
+
+    .bookTitle {
+      color: colors.$BLACK;
+    }
+  }
+}
+
+.list + .list {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 625px) {
+  .data {
+    width: 150px;
+
+    img {
+      width: 125px;
+      height: 170px;
+      border-radius: 10px;
+    }
+
+    .metaData p {
+      width: 120px;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .data {
+    width: 170px;
+
+    img {
+      width: 145px;
+      height: 190px;
+      border-radius: 10px;
+    }
+
+    .metaData p {
+      width: 140px;
+    }
+  }
+}
