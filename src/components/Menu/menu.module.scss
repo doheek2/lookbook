@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/levels';
 
 .menuContainer {
   margin-left: 20px;
@@ -40,7 +41,7 @@
 }
 
 @media screen and (max-width: 625px) {
-  .name {
+  .logo {
     display: none;
   }
 
@@ -56,15 +57,17 @@
 @media screen and (min-width: 625px) {
   .sideBarContainer {
     position: relative;
-    width: 15vw;
-    min-width: 250px;
-    min-height: 95vh;
+    z-index: levels.$NAV_BAR;
+    width: 250px;
+    height: 100vh;
+    background-color: colors.$BACKGROUND;
 
-    .name {
+    .logo {
       margin: 40px 0 0 20px;
       font-family: Montserrat, sans-serif;
       font-size: 25px;
       font-weight: 600;
+      color: colors.$BLACK;
       letter-spacing: 2px;
     }
 
