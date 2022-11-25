@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import cx from 'classnames'
 
@@ -16,6 +16,11 @@ interface IProps {
 
 const Menu = ({ isMobile }: IProps) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const logoBtnClickHandler = useCallback(() => {
+    navigate('/')
+  }, [navigate])
 
   const menuBarCloseHandler = useCallback(() => {
     dispatch(menuActions.isOpenMenu())
@@ -23,7 +28,9 @@ const Menu = ({ isMobile }: IProps) => {
 
   return (
     <nav className={styles.sideBarContainer}>
-      <p className={styles.name}>LOOKBOOK</p>
+      <button type='button' className={styles.logo} onClick={logoBtnClickHandler}>
+        LOOKBOOK
+      </button>
       <ul className={styles.menuContainer}>
         <li>
           <NavLink
