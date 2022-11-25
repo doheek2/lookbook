@@ -1,13 +1,14 @@
-import { debounce } from 'lodash'
 import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
+import { debounce } from 'lodash'
 
 import { IKakaoAPI } from 'types/lookbook'
 import useKeywordQuery from 'hooks/useKeywordQuery'
 
-import Recommendation from 'components/Recommendation'
+import Container from 'components/Container'
+import BookItem from 'components/BookItem'
+import Recommendation from './Recommendation'
 
 import styles from './main.module.scss'
-import Container from 'components/Container'
 
 const Main = () => {
   const [books, setBooks] = useState<IKakaoAPI>([])
@@ -44,19 +45,24 @@ const Main = () => {
         <Suspense fallback={<div>loading</div>}>
           {books && query.length === 0 && <Recommendation />}
           {books.length === 0 && query.length !== 0 && <p>검색한 책이 없습니다</p>}
+          <article className={styles.bookListContainer}>
+            {books.length !== 0 &&
+              books.map((book, i) => {
+                const key = `books-${i}`
+                return (
+                  <BookItem
+                    key={key}
+                    id={key}
+                    isList={false}
+                    thumbnail={book.thumbnail}
+                    title={book.title}
+                    publisher={book.publisher}
+                    price={String(book.price)}
+                  />
+                )
+              })}
+          </article>
         </Suspense>
-        <article className={styles.bookListContainer}>
-          {books.length !== 0 &&
-            books.map((v, i) => {
-              const key = `books-${i}`
-              return (
-                <div key={key}>
-                  <img src={v.thumbnail} alt={v.title} />
-                  <p>{v.title}</p>
-                </div>
-              )
-            })}
-        </article>
       </main>
     </Container>
   )
