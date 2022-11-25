@@ -1,0 +1,43 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.recommendationContainer {
+  width: 100vw;
+
+  .title {
+    color: colors.$BLACK;
+  }
+
+  .bookListContainer {
+    display: flex;
+    width: 90vw;
+    margin-top: 20px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .recommendationContainer {
+    width: 90vw;
+    margin-top: 15px;
+
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .recommendationContainer {
+    margin-top: 20px;
+
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}
