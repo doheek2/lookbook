@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.button {
+  @include flexbox.flexbox(center, center);
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  transform: 0.2s;
+}
