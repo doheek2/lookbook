@@ -1,16 +1,20 @@
 import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { debounce } from 'lodash'
+import { HiLogin } from 'react-icons/hi'
 
 import { IKakaoAPI } from 'types/lookbook'
 import useKeywordQuery from 'hooks/useKeywordQuery'
 
 import Container from 'components/Container'
 import BookItem from 'components/BookItem'
+import Button from 'components/Button'
 import Recommendation from './Recommendation'
 
 import styles from './main.module.scss'
 
 const Main = () => {
+  const navigate = useNavigate()
   const [books, setBooks] = useState<IKakaoAPI>([])
   const [query, setQuery] = useState('')
   const { data } = useKeywordQuery(query)
@@ -20,9 +24,7 @@ const Main = () => {
     else setBooks([])
   }, [data, query.length])
 
-  const debouncedSearch = debounce((searchText: string) => {
-    setQuery(searchText)
-  }, 300)
+  const debouncedSearch = debounce((searchText: string) => setQuery(searchText), 300)
 
   const searchBookHandler = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,13 +37,25 @@ const Main = () => {
     e.preventDefault()
   }, [])
 
+  const loginBtnClickHandler = useCallback(() => navigate('/login'), [navigate])
+
   return (
     <Container>
       <main className={styles.mainContainer}>
-        <form className={styles.form} onSubmit={formSubmitHandler}>
-          <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
-          <button type='submit'>검색</button>
-        </form>
+        <header>
+          <form className={styles.form} onSubmit={formSubmitHandler}>
+            <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
+            <Button isSubmit>
+              <p>검색</p>
+            </Button>
+          </form>
+          <Button className={styles.loginBtn} isSubmit={false} onClick={loginBtnClickHandler}>
+            <>
+              <HiLogin />
+              LOGIN
+            </>
+          </Button>
+        </header>
         <Suspense fallback={<div>loading</div>}>
           {books && query.length === 0 && <Recommendation />}
           {books.length === 0 && query.length !== 0 && <p>검색한 책이 없습니다</p>}
