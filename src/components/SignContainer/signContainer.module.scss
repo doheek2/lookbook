@@ -1,0 +1,59 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.loginWrapper {
+  width: 100vw;
+  height: 100vh;
+
+  .whiteBox {
+    @include flexbox.columnFlexbox(center, center);
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .loginWrapper {
+    @include flexbox.flexbox(center, center);
+
+    .introduce {
+      display: none;
+    }
+
+    .whiteBox {
+      width: 300px;
+      height: 350px;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .loginWrapper {
+    @include flexbox.flexbox(center, center);
+    background-color: colors.$BACKGROUND;
+
+    .introduce {
+      margin-right: 70px;
+
+      p {
+        margin-top: 5px;
+        font-size: 30px;
+        line-height: 40px;
+        color: colors.$BLACK;
+      }
+
+      .webLogo {
+        margin-top: 3px;
+        font-size: 33px;
+        font-weight: 800;
+        color: colors.$BLACK;
+      }
+    }
+
+    .whiteBox {
+      width: 400px;
+      height: 500px;
+      padding: 50px;
+      background-color: colors.$WHITE;
+      border-radius: 35px;
+    }
+  }
+}
