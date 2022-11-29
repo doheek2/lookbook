@@ -1,0 +1,107 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  .loginForm {
+    width: 300px;
+    height: 310px;
+
+    .input {
+      width: 300px;
+      height: 50px;
+      color: colors.$GRAY3;
+      background-color: colors.$INPUT;
+
+      &::placeholder {
+        font-size: 16px;
+        color: colors.$GRAY3;
+        text-indent: 20px;
+      }
+
+      &:focus {
+        border: 2px solid colors.$GREEN1;
+      }
+
+      & + .input {
+        margin-top: 30px;
+      }
+    }
+
+    .validate {
+      margin: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: colors.$RED;
+    }
+
+    .loginBtn {
+      width: 300px;
+      height: 50px;
+      margin-top: 30px;
+      color: colors.$WHITE;
+      background-color: colors.$GRAY5;
+    }
+
+    .disabledBtn {
+      background-color: colors.$GREEN1;
+
+      &:hover {
+        background-color: colors.$GREEN2;
+      }
+    }
+  }
+
+  .signUpTextWrapper {
+    display: flex;
+    justify-content: center;
+    width: 280px;
+
+    .signUpAccountText {
+      margin-top: 10px;
+      font-size: 13px;
+      color: colors.$GRAY3;
+    }
+
+    .signUpText {
+      margin-top: 10px;
+      margin-left: 5px;
+      font-size: 13px;
+      color: colors.$GREEN1;
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .wrapper {
+    @include flexbox.columnFlexbox(center, center);
+
+    h3 {
+      display: none;
+    }
+
+    .mobileLogo {
+      margin-bottom: 25px;
+      font-size: 30px;
+      font-weight: 800;
+      color: colors.$GREEN1;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .wrapper {
+    width: 100%;
+    height: 350px;
+
+    .mobileLogo {
+      display: none;
+    }
+
+    h3 {
+      margin-bottom: 25px;
+      font-size: 23px;
+      font-weight: 800;
+      color: colors.$GREEN1;
+    }
+  }
+}
