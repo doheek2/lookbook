@@ -1,98 +1,104 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
 
-.loginWrapper {
-  @include flexbox.flexbox(center, center);
-  width: 100vw;
-  height: 100vh;
-  background-color: colors.$BACKGROUND;
+.wrapper {
+  .loginForm {
+    width: 300px;
+    height: 220px;
 
-  .whiteBox {
-    @include flexbox.columnFlexbox(between, start);
-    width: 400px;
-    height: 450px;
-    padding: 50px;
-    background-color: colors.$WHITE;
-    border-radius: 35px;
+    .input {
+      width: 300px;
+      height: 50px;
+      color: colors.$GRAY3;
+      background-color: colors.$INPUT;
 
-    h3 {
-      margin-bottom: 5px;
-      font-size: 23px;
-      font-weight: 800;
-      color: colors.$GREEN1;
+      &::placeholder {
+        font-size: 16px;
+        color: colors.$GRAY3;
+        text-indent: 20px;
+      }
+
+      &:focus {
+        border: 2px solid colors.$GREEN1;
+      }
+
+      & + .input {
+        margin-top: 30px;
+      }
     }
 
-    .loginText {
+    .validate {
+      margin: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: colors.$RED;
+    }
+
+    .loginBtn {
+      width: 300px;
+      height: 50px;
+      margin-top: 30px;
+      color: colors.$WHITE;
+      background-color: colors.$GRAY5;
+    }
+
+    .disabledBtn {
+      background-color: colors.$GREEN1;
+
+      &:hover {
+        background-color: colors.$GREEN2;
+      }
+    }
+  }
+
+  .signUpTextWrapper {
+    display: flex;
+    justify-content: center;
+    width: 280px;
+
+    .signUpAccountText {
+      margin-top: 10px;
       font-size: 13px;
       color: colors.$GRAY3;
     }
 
-    .loginForm {
-      width: 100%;
-      height: 220px;
+    .signUpText {
+      margin-top: 10px;
+      margin-left: 5px;
+      font-size: 13px;
+      color: colors.$GREEN1;
+    }
+  }
+}
 
-      .input {
-        width: 280px;
-        height: 50px;
-        color: colors.$GRAY3;
-        background-color: colors.$INPUT;
+@media screen and (max-width: 625px) {
+  .wrapper {
+    @include flexbox.columnFlexbox(center, center);
 
-        &::placeholder {
-          font-size: 16px;
-          color: colors.$GRAY3;
-          text-indent: 20px;
-        }
-
-        &:focus {
-          border: 2px solid colors.$GREEN1;
-        }
-
-        & + .input {
-          margin-top: 20px;
-        }
-      }
-
-      .validate {
-        margin: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        color: colors.$RED;
-      }
-
-      .loginBtn {
-        width: 280px;
-        height: 50px;
-        margin-top: 30px;
-        color: colors.$WHITE;
-        background-color: colors.$GRAY5;
-      }
-
-      .disabledBtn {
-        background-color: colors.$GREEN1;
-
-        &:hover {
-          background-color: colors.$GREEN2;
-        }
-      }
+    h3 {
+      display: none;
     }
 
-    .signUpTextWrapper {
-      display: flex;
-      justify-content: center;
-      width: 280px;
+    .mobileLogo {
+      margin-bottom: 25px;
+      font-size: 30px;
+      font-weight: 800;
+      color: colors.$GREEN1;
+    }
+  }
+}
 
-      .signUpAccountText {
-        margin-top: 10px;
-        font-size: 13px;
-        color: colors.$GRAY3;
-      }
+@media screen and (min-width: 625px) {
+  .wrapper {
+    .mobileLogo {
+      display: none;
+    }
 
-      .signUpText {
-        margin-top: 10px;
-        margin-left: 5px;
-        font-size: 13px;
-        color: colors.$GREEN1;
-      }
+    h3 {
+      margin-bottom: 25px;
+      font-size: 23px;
+      font-weight: 800;
+      color: colors.$GREEN1;
     }
   }
 }
