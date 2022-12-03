@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/levels';
 
 .backdrop {
   position: fixed;
@@ -15,9 +16,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  width: 70vw;
+  z-index: levels.$MENU_CONTAINER;
+  width: auto;
   height: 100vh;
+  padding-right: 20px;
   overflow: hidden;
   background-color: colors.$WHITE;
   border-top-right-radius: 30px;
