@@ -16,10 +16,6 @@
   .mainContainer {
     @include flexbox.columnFlexbox(start, center);
 
-    .loginBtn {
-      display: none;
-    }
-
     .form {
       width: 90vw;
       margin-top: 15px;
@@ -60,24 +56,13 @@
       @include flexbox.flexbox(between, center);
       width: 80%;
       margin-top: 20px;
+    }
 
-      .loginBtn {
-        width: 95px;
-        height: 45px;
-        font-weight: 600;
-        color: colors.$WHITE;
-        background-color: colors.$GREEN1;
-
-        svg {
-          width: 20px;
-          height: 20px;
-          margin-right: 3px;
-        }
-
-        &:hover {
-          background-color: colors.$GREEN2;
-        }
-      }
+    .user {
+      font-size: 15px;
+      font-weight: 500;
+      color: colors.$BLACK;
+      letter-spacing: 0.2px;
     }
 
     .form {
