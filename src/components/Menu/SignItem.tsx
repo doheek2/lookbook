@@ -1,22 +1,28 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { HiLogin, HiLogout } from 'react-icons/hi'
 
 import { menuActions } from 'store/menu-slice'
 import useLogout from 'hooks/useLogout'
 import Button from 'components/Button'
+import { loginName } from 'dictionary/menu'
 
 interface IProps {
   isMobile: boolean
-  isLogin: boolean
-  svg: JSX.Element
   name: string
 }
 
-const SignItem = ({ isMobile, isLogin, svg, name }: IProps) => {
+const SignItem = ({ isMobile, name }: IProps) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { logoutHandler } = useLogout()
+  const menuName = loginName[name]
+
+  const svgIcon = {
+    login: <HiLogin />,
+    logout: <HiLogout />,
+  }[name]
 
   const menuBarCloseHandler = useCallback(() => {
     dispatch(menuActions.isOpenMenu())
@@ -32,13 +38,13 @@ const SignItem = ({ isMobile, isLogin, svg, name }: IProps) => {
       onClick={() => {
         if (isMobile) menuBarCloseHandler()
 
-        if (isLogin) loginBtnClickHandler()
+        if (name === 'login') loginBtnClickHandler()
         else logoutHandler()
       }}
     >
       <>
-        {svg}
-        <span>{name}</span>
+        {svgIcon}
+        <span>{menuName}</span>
       </>
     </Button>
   )
