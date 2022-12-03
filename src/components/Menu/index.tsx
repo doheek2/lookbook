@@ -2,10 +2,6 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { FaHome, FaBook, FaHeart } from 'react-icons/fa'
-import { BsFillPeopleFill } from 'react-icons/bs'
-import { HiLogin, HiLogout } from 'react-icons/hi'
-
 import { storeType } from 'store'
 import { IUserState } from 'types/firebaseAuth'
 import DarkModeBtn from 'components/DarkModeBtn'
@@ -13,6 +9,8 @@ import NavItem from './NavItem'
 import SignItem from './SignItem'
 
 import styles from './menu.module.scss'
+
+const menus = ['main', 'bookdiary', 'lookbook', 'favorites']
 
 interface IProps {
   isMobile: boolean
@@ -32,14 +30,14 @@ const Menu = ({ isMobile }: IProps) => {
         LOOKBOOK
       </button>
       <ul className={styles.menuContainer}>
-        <NavItem isMobile={isMobile} route='/' svg={<FaHome />} name='홈' />
-        <NavItem isMobile={isMobile} route='/bookdiary' svg={<FaBook />} name='책일기장' />
-        <NavItem isMobile={isMobile} route='/lookbook' svg={<BsFillPeopleFill />} name='LOOKBOOK' />
-        <NavItem isMobile={isMobile} route='/favorites' svg={<FaHeart />} name='즐겨찾기' />
+        {menus.map((menu, i) => {
+          const key = `menu${i}`
+          return <NavItem key={key} isMobile={isMobile} menu={menu} />
+        })}
         <div className={styles.line} />
         <li>
-          {!user && <SignItem isMobile={isMobile} isLogin svg={<HiLogin />} name='로그인' />}
-          {user && <SignItem isMobile={isMobile} isLogin={false} svg={<HiLogout />} name='로그아웃' />}
+          {!user && <SignItem isMobile={isMobile} name='login' />}
+          {user && <SignItem isMobile={isMobile} name='logout' />}
         </li>
       </ul>
       <div className={styles.darkModeBtnContainer}>
