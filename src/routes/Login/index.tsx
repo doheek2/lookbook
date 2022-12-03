@@ -1,19 +1,29 @@
-import { useCallback, ChangeEvent, useState, useEffect } from 'react'
+import { useCallback, ChangeEvent, useState, useEffect, FormEvent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import cx from 'classnames'
 
 import Input from 'components/Input'
 import Button from 'components/Button'
 import SignContainer from 'components/SignContainer'
+import useLogin from 'hooks/useLogin'
 
 import styles from './login.module.scss'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { error, isPending, loginHandler } = useLogin()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isShowEmailText, setIsShowEmailText] = useState(true)
   const [isDisabledBtn, setIsDisabledBtn] = useState(true)
+
+  const formSubmitHandler = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      loginHandler(email, password)
+    },
+    [email, loginHandler, password]
+  )
 
   const logoBtnClickHandler = useCallback(() => navigate('/'), [navigate])
 
@@ -47,7 +57,7 @@ const Login = () => {
             LOOKBOOK
           </button>
         </div>
-        <form className={styles.loginForm}>
+        <form className={styles.loginForm} onSubmit={formSubmitHandler}>
           <Input
             type='text'
             isAutocomplete
