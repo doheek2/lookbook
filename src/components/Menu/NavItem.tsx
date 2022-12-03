@@ -3,17 +3,28 @@ import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import cx from 'classnames'
 
+import { FaHome, FaBook, FaHeart } from 'react-icons/fa'
+import { BsFillPeopleFill } from 'react-icons/bs'
+
+import { menuName, menuRoute } from 'dictionary/menu'
 import { menuActions } from 'store/menu-slice'
 import styles from './menu.module.scss'
 
 interface IProps {
   isMobile: boolean
-  route: string
-  svg: JSX.Element
-  name: string
+  menu: string
 }
 
-const NavItem = ({ isMobile, route, svg, name }: IProps) => {
+const NavItem = ({ isMobile, menu }: IProps) => {
+  const svgIcon = {
+    main: <FaHome />,
+    bookdiary: <FaBook />,
+    lookbook: <BsFillPeopleFill />,
+    favorites: <FaHeart />,
+  }[menu]
+
+  const route = menuRoute[menu]
+  const name = menuName[menu]
   const dispatch = useDispatch()
 
   const menuBarCloseHandler = useCallback(() => {
@@ -23,13 +34,13 @@ const NavItem = ({ isMobile, route, svg, name }: IProps) => {
   return (
     <li>
       <NavLink
-        to={route}
+        to={`/${route}`}
         onClick={() => {
           if (isMobile) menuBarCloseHandler()
         }}
         className={({ isActive }) => cx({ [styles.isActive]: isActive })}
       >
-        {svg}
+        {svgIcon}
         <span>{name}</span>
       </NavLink>
     </li>
