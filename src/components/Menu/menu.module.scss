@@ -21,22 +21,30 @@
     a {
       display: flex;
       align-items: center;
-
-      svg {
-        width: 32px;
-        height: 32px;
-        padding: 6px;
-        color: colors.$GRAY3;
-        background-color: colors.$GRAY2;
-        border-radius: 10px;
-      }
-
-      span {
-        margin-left: 10px;
-        font-weight: 500;
-        color: colors.$GRAY3;
-      }
     }
+
+    svg {
+      width: 32px;
+      height: 32px;
+      padding: 6px;
+      color: colors.$GRAY3;
+      background-color: colors.$GRAY2;
+      border-radius: 10px;
+    }
+
+    span {
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      color: colors.$GRAY3;
+    }
+  }
+
+  .line {
+    width: 200px;
+    height: 1px;
+    margin: 20px 0;
+    background-color: colors.$GRAY3;
   }
 }
 
