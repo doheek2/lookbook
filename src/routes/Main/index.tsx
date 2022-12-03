@@ -1,10 +1,11 @@
 import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { debounce } from 'lodash'
-import { HiLogin } from 'react-icons/hi'
 
 import { IKakaoAPI } from 'types/lookbook'
+import { IUserState } from 'types/firebaseAuth'
 import useKeywordQuery from 'hooks/useKeywordQuery'
+import { storeType } from 'store'
 
 import Container from 'components/Container'
 import BookItem from 'components/BookItem'
@@ -14,10 +15,10 @@ import Recommendation from './Recommendation'
 import styles from './main.module.scss'
 
 const Main = () => {
-  const navigate = useNavigate()
   const [books, setBooks] = useState<IKakaoAPI>([])
   const [query, setQuery] = useState('')
   const { data } = useKeywordQuery(query)
+  const user: IUserState | null = useSelector((state: storeType) => state.auth.user)
 
   useEffect(() => {
     if (query.length > 0 && data) setBooks(data.data.documents)
@@ -37,8 +38,6 @@ const Main = () => {
     e.preventDefault()
   }, [])
 
-  const loginBtnClickHandler = useCallback(() => navigate('/login'), [navigate])
-
   return (
     <Container>
       <main className={styles.mainContainer}>
@@ -49,12 +48,8 @@ const Main = () => {
               <p>검색</p>
             </Button>
           </form>
-          <Button className={styles.loginBtn} isSubmit={false} onClick={loginBtnClickHandler}>
-            <>
-              <HiLogin />
-              LOGIN
-            </>
-          </Button>
+          {/* eslint-disable-next-line dot-notation */}
+          {user && <p className={styles.user}>{user['displayName']}님 환영합니다!</p>}
         </header>
         <Suspense fallback={<div>loading</div>}>
           {books && query.length === 0 && <Recommendation />}
