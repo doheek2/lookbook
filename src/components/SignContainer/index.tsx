@@ -8,7 +8,7 @@ interface IProps {
 
 const SignContainer = ({ children, logoBtnClickHandler }: IProps) => {
   return (
-    <main className={styles.loginWrapper}>
+    <main className={styles.wrapper}>
       <article className={styles.introduce}>
         <p>책으로 소통하는</p>
         <p>우리만의 공간</p>
