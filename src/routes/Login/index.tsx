@@ -73,6 +73,7 @@ const Login = () => {
             placeholder='비밀번호'
             onChange={passwordChangeHandler}
           />
+          {error && <p className={styles.validate}>{error}</p>}
           <Button
             isSubmit
             className={cx(styles.loginBtn, !isDisabledBtn && styles.disabledBtn)}
