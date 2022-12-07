@@ -1,4 +1,4 @@
-import { useCallback, ChangeEvent, useState, useEffect, FormEvent } from 'react'
+import { useCallback, ChangeEvent, useState, FormEvent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import cx from 'classnames'
 
@@ -12,10 +12,18 @@ import styles from './login.module.scss'
 const Login = () => {
   const navigate = useNavigate()
   const { error, isPending, loginHandler } = useLogin()
+
+  // 값 저장
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isShowEmailText, setIsShowEmailText] = useState(true)
-  const [isDisabledBtn, setIsDisabledBtn] = useState(true)
+
+  // 에러메세지 저장
+  const [emailMsg, setemailMsg] = useState<string | null>(null)
+  const [passwordMsg, setPasswordMsg] = useState<string | null>(null)
+
+  // 유효성 검사
+  const [isEmail, setIsEmail] = useState(false)
+  const [isPassWord, setIsPassWord] = useState(false)
 
   const formSubmitHandler = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -33,20 +41,31 @@ const Login = () => {
       // eslint-disable-next-line no-useless-escape
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-    if (regex.test(value)) setIsShowEmailText(true)
-    else setIsShowEmailText(false)
+    if (regex.test(value)) {
+      setemailMsg(null)
+      setIsEmail(true)
+    } else {
+      setemailMsg('이메일 형식이 틀렸습니다.')
+      setIsEmail(false)
+    }
 
     setEmail(value)
   }, [])
 
   const passwordChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.currentTarget.value)
-  }, [])
+    const { value } = e.currentTarget
+    const passwordLength = value.length
 
-  useEffect(() => {
-    if (isShowEmailText && password) setIsDisabledBtn(false)
-    else setIsDisabledBtn(true)
-  }, [isShowEmailText, password])
+    if (passwordLength < 8 || passwordLength > 64) {
+      setPasswordMsg('비밀번호는 8~64자로 입력해주세요.')
+      setIsPassWord(false)
+    } else {
+      setPasswordMsg(null)
+      setIsPassWord(true)
+    }
+
+    setPassword(value)
+  }, [])
 
   return (
     <SignContainer logoBtnClickHandler={logoBtnClickHandler}>
@@ -61,23 +80,22 @@ const Login = () => {
           <Input
             type='text'
             isAutocomplete
-            className={styles.input}
             placeholder='이메일'
+            validateText={emailMsg}
             onChange={emailChangeHandler}
           />
-          {!isShowEmailText && <p className={styles.validate}>이메일 형식이 틀렸습니다.</p>}
           <Input
             type='password'
             isAutocomplete={false}
-            className={styles.input}
             placeholder='비밀번호'
+            validateText={passwordMsg}
             onChange={passwordChangeHandler}
           />
-          {error && <p className={styles.validate}>{error}</p>}
+          {error && <p className={styles.errorMsg}>{error}</p>}
           <Button
             isSubmit
-            className={cx(styles.loginBtn, !isDisabledBtn && styles.disabledBtn)}
-            disabled={isDisabledBtn}
+            className={cx(styles.loginBtn, isEmail && isPassWord && styles.disabledBtn)}
+            disabled={!(isEmail && isPassWord)}
           >
             <p>로그인</p>
           </Button>
