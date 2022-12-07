@@ -16,6 +16,10 @@
   .mainContainer {
     @include flexbox.columnFlexbox(start, center);
 
+    .user {
+      display: none;
+    }
+
     .form {
       width: 90vw;
       margin-top: 15px;
