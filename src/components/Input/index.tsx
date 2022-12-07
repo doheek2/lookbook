@@ -1,24 +1,21 @@
 import { ChangeEventHandler } from 'react'
-import cx from 'classnames'
 
 import styles from './input.module.scss'
 
 interface IProps {
   type: string
   isAutocomplete: boolean
-  className?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  placeholder?: string
+  placeholder: string
+  validateText: string | null
+  onChange: ChangeEventHandler<HTMLInputElement>
 }
-const Input = ({ type, isAutocomplete, className, onChange, placeholder }: IProps) => {
+
+const Input = ({ type, isAutocomplete, placeholder, validateText, onChange }: IProps) => {
   return (
-    <input
-      type={type}
-      autoComplete={isAutocomplete ? 'on' : 'off'}
-      className={cx(styles.input, className)}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
+    <div className={styles.inputWrapper}>
+      <input type={type} autoComplete={isAutocomplete ? 'on' : 'off'} placeholder={placeholder} onChange={onChange} />
+      <p className={styles.validate}>{validateText}</p>
+    </div>
   )
 }
 
