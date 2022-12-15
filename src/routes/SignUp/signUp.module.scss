@@ -16,6 +16,7 @@
 
     .disabledBtn {
       background-color: colors.$GREEN1;
+      transition: background-color 0.2s ease-out;
 
       &:hover {
         background-color: colors.$GREEN2;
