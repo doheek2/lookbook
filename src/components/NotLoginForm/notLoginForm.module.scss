@@ -1,0 +1,71 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.notLoginFormWrapper {
+  @include flexbox.columnFlexbox(center, center);
+
+  h3 {
+    font-size: 19px;
+    color: colors.$BLACK;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  button {
+    width: 300px;
+    height: 50px;
+    margin-top: 15px;
+  }
+
+  .loginBtn {
+    color: colors.$WHITE;
+    background-color: colors.$GREEN1;
+    transition: background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: colors.$GREEN2;
+    }
+  }
+
+  .signUpBtn {
+    color: colors.$GREEN1;
+    background-color: colors.$GREEN3;
+    transition: background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: colors.$GREEN4;
+    }
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .notLoginFormWrapper {
+    width: 100vw;
+    height: 90vh;
+  }
+
+  .loginBtn {
+    font-size: 14px;
+  }
+
+  .signUpBtn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .notLoginFormWrapper {
+    flex-grow: 1;
+    height: 100vh;
+
+    .loginBtn {
+      font-size: 16px;
+    }
+
+    .signUpBtn {
+      font-size: 16px;
+    }
+  }
+}
