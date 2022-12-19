@@ -1,0 +1,46 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.loader {
+  @include flexbox.flexbox(center, center);
+  position: relative;
+  margin-bottom: 25px;
+  font-size: 7px;
+  color: colors.$WHITE;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+
+  &,
+  &::before,
+  &::after {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    animation: bblFadInOut 1.8s infinite ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    content: '';
+  }
+
+  &::before {
+    left: -2.5em;
+    animation-delay: -0.32s;
+  }
+
+  &::after {
+    left: 2.5em;
+  }
+
+  @keyframes bblFadInOut {
+    0% { box-shadow: 0 2em 0 -1em; }
+    40% { box-shadow: 0 2em 0 0; }
+    80% { box-shadow: 0 2em 0 -1em; }
+    100% { box-shadow: 0 2em 0 -1em; }
+  }
+}
