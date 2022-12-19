@@ -4,6 +4,5 @@
 .button {
   @include flexbox.flexbox(center, center);
   font-size: 14px;
-  letter-spacing: 1px;
   border-radius: 20px;
 }
