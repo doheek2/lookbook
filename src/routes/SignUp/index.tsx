@@ -5,6 +5,7 @@ import cx from 'classnames'
 import SignContainer from 'components/SignContainer'
 import Input from 'components/Input'
 import Button from 'components/Button'
+import LoadingIcon from 'components/LoadingIcon'
 import useSignUp from 'hooks/useSignUp'
 
 import styles from './signUp.module.scss'
@@ -122,7 +123,10 @@ const SignUp = () => {
             className={cx(styles.signUpBtn, isDisplayName && isEmail && isPassWord && styles.disabledBtn)}
             disabled={!(isDisplayName && isEmail && isPassWord)}
           >
-            <p>가입하기</p>
+            <>
+              {isPending && <LoadingIcon />}
+              {!isPending && <p>가입하기</p>}
+            </>
           </Button>
         </form>
         <div className={styles.loginWrapper}>
