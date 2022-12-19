@@ -98,10 +98,8 @@ const Login = () => {
             className={cx(styles.loginBtn, isEmail && isPassWord && styles.disabledBtn)}
             disabled={!(isEmail && isPassWord)}
           >
-            <>
-              {isPending && <LoadingIcon />}
-              {!isPending && <p>로그인</p>}
-            </>
+            {isPending && <LoadingIcon />}
+            {!isPending && <p>로그인</p>}
           </Button>
         </form>
         <div className={styles.signUpTextWrapper}>

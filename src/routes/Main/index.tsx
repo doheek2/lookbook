@@ -44,9 +44,7 @@ const Main = () => {
         <header>
           <form className={styles.form} onSubmit={formSubmitHandler}>
             <input type='text' placeholder='책제목을 입력해주세요!' onChange={searchBookHandler} />
-            <Button isSubmit>
-              <p>검색</p>
-            </Button>
+            <Button isSubmit>검색</Button>
           </form>
           {/* eslint-disable-next-line dot-notation */}
           {user && <p className={styles.user}>{user['displayName']}님 환영합니다!</p>}

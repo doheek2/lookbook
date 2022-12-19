@@ -42,10 +42,8 @@ const SignItem = ({ isMobile, name }: IProps) => {
         else logoutHandler()
       }}
     >
-      <>
-        {svgIcon}
-        <span>{menuName}</span>
-      </>
+      {svgIcon}
+      <span>{menuName}</span>
     </Button>
   )
 }

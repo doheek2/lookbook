@@ -18,10 +18,10 @@ const NotLoginForm = ({ pageName }: IProps) => {
         {pageName}은 <span>로그인</span> 후 이용 가능합니다.
       </h3>
       <Button isSubmit={false} className={styles.loginBtn} onClick={loginBtnClickHandler}>
-        <p>로그인</p>
+        로그인
       </Button>
       <Button isSubmit={false} className={styles.signUpBtn} onClick={signUpBtnClickHandler}>
-        <p>회원가입</p>
+        회원가입
       </Button>
     </div>
   )

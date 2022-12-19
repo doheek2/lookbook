@@ -123,10 +123,8 @@ const SignUp = () => {
             className={cx(styles.signUpBtn, isDisplayName && isEmail && isPassWord && styles.disabledBtn)}
             disabled={!(isDisplayName && isEmail && isPassWord)}
           >
-            <>
-              {isPending && <LoadingIcon />}
-              {!isPending && <p>가입하기</p>}
-            </>
+            {isPending && <LoadingIcon />}
+            {!isPending && <p>가입하기</p>}
           </Button>
         </form>
         <div className={styles.loginWrapper}>
