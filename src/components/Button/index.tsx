@@ -4,7 +4,7 @@ import cx from 'classnames'
 import styles from './button.module.scss'
 
 interface IProps {
-  children: JSX.Element
+  children: React.ReactNode
   isSubmit: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
