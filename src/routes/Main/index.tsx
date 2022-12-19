@@ -64,7 +64,7 @@ const Main = () => {
                     thumbnail={book.thumbnail}
                     title={book.title}
                     publisher={book.publisher}
-                    price={String(book.price)}
+                    price={`${book.price}`}
                   />
                 )
               })}
