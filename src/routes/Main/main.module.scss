@@ -43,6 +43,7 @@
 
     .bookListContainer {
       grid-template-columns: repeat((auto-fill, minmax(130px, 1fr)));
+      place-items: center;
       width: 80vw;
     }
   }
@@ -75,6 +76,7 @@
       border-radius: 20px;
 
       input {
+        position: relative;
         width: 50vw;
         height: 30px;
         margin: 0 3vw;
