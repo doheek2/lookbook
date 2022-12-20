@@ -1,14 +1,11 @@
-import { useSelector } from 'react-redux'
-
-import { storeType } from 'store'
-import { IUserState } from 'types/firebaseAuth'
 import Container from 'components/Container'
 import NotLoginForm from 'components/NotLoginForm'
+import useAuth from 'hooks/useAuth'
 
 import styles from './bookDiary.module.scss'
 
 const BookDiary = () => {
-  const user: IUserState | null = useSelector((state: storeType) => state.auth.user)
+  const { user } = useAuth()
 
   return (
     <Container>

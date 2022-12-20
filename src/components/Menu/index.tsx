@@ -1,14 +1,12 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
-import { storeType } from 'store'
-import { IUserState } from 'types/firebaseAuth'
 import DarkModeBtn from 'components/DarkModeBtn'
 import NavItem from './NavItem'
 import SignItem from './SignItem'
 
 import styles from './menu.module.scss'
+import useAuth from 'hooks/useAuth'
 
 const menus = ['main', 'bookdiary', 'lookbook', 'favorites']
 
@@ -18,7 +16,7 @@ interface IProps {
 
 const Menu = ({ isMobile }: IProps) => {
   const navigate = useNavigate()
-  const user: IUserState | null = useSelector((state: storeType) => state.auth.user)
+  const { user } = useAuth()
 
   const logoBtnClickHandler = useCallback(() => {
     navigate('/')

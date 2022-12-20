@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { appAuth } from 'firebaseApp/config'
-import { authActions } from 'store/auth-slice'
+import useAuth from './useAuth'
 
 const useSignUp = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const { userDispatch } = useAuth()
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
 
@@ -24,7 +23,7 @@ const useSignUp = () => {
 
         updateProfile(user, { displayName })
           .then(() => {
-            dispatch(authActions.user({ displayName, email, uid: user.uid }))
+            userDispatch({ displayName, email, uid: user.uid })
             setError(null)
             setIsPending(false)
           })

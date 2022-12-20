@@ -1,11 +1,9 @@
 import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { debounce } from 'lodash'
 
 import { IKakaoAPI } from 'types/lookbook'
-import { IUserState } from 'types/firebaseAuth'
 import useKeywordQuery from 'hooks/useKeywordQuery'
-import { storeType } from 'store'
+import useAuth from 'hooks/useAuth'
 
 import Container from 'components/Container'
 import BookItem from 'components/BookItem'
@@ -18,7 +16,7 @@ const Main = () => {
   const [books, setBooks] = useState<IKakaoAPI>([])
   const [query, setQuery] = useState('')
   const { data } = useKeywordQuery(query)
-  const user: IUserState | null = useSelector((state: storeType) => state.auth.user)
+  const { user } = useAuth()
 
   useEffect(() => {
     if (query.length > 0 && data) setBooks(data.data.documents)
