@@ -1,0 +1,15 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+@media screen and (max-width: 625px) {
+  .checkbox {
+    @include flexbox.flexbox(start, center);
+    width: 100px;
+    height: 30px;
+
+    label {
+      font-size: 15px;
+      color: colors.$BLACK;
+    }
+  }
+}
