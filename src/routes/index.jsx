@@ -4,6 +4,7 @@ import Main from './Main'
 import Login from './Login'
 import SignUp from './SignUp'
 import BookDiary from './BookDiary'
+import DiaryForm from './DiaryForm'
 import LookBook from './LookBook'
 import Favorites from './Favorites'
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='bookdiary' element={<BookDiary />} />
+        <Route path='diaryForm' element={<DiaryForm />} />
         <Route path='lookbook' element={<LookBook />} />
         <Route path='favorites' element={<Favorites />} />
         <Route path='*' element={<div>404</div>} />
