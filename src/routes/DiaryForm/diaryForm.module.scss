@@ -1,0 +1,91 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.diaryFormWrapper {
+  @include flexbox.columnFlexbox(center, center);
+  width: 100vw;
+  height: 100vh;
+}
+
+@media screen and (max-width: 625px) {
+  .mobileCloseBtn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  .formWrapper {
+    width: 100vw;
+    height: 90vh;
+    padding: 40px;
+
+    label {
+      font-size: 15px;
+      color: colors.$BLACK;
+    }
+
+    .searchBtnWrapper {
+      margin-bottom: 20px;
+
+      .searchBookBtn {
+        @include flexbox.flexbox(start, center);
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        color: colors.$BLACK;
+        border: 1px solid colors.$GRAY7;
+        border-radius: 10px;
+
+        svg {
+          width: 17px;
+          height: 17px;
+          margin-right: 5px;
+          color: colors.$BLACK;
+        }
+
+        span {
+          font-size: 15px;
+          color: colors.$BLACK;
+        }
+
+        &:hover,
+        &:focus {
+          border: 3px solid colors.$GREEN4;
+        }
+      }
+    }
+
+    .isShowDiaryWrapper {
+      margin: 20px 0;
+
+      p {
+        font-size: 15px;
+        color: colors.$BLACK;
+      }
+
+      .checkboxWrapper {
+        @include flexbox.flexbox(start, center);
+        margin-top: 10px;
+      }
+    }
+
+    .addBtn {
+      width: 100%;
+      height: 55px;
+      font-size: 15px;
+      color: colors.$WHITE;
+      background-color: colors.$GREEN1;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: colors.$GREEN2;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .mobileCloseBtn {
+    display: none;
+  }
+}
