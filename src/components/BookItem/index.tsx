@@ -22,7 +22,7 @@ const BookItem = ({ id, isList, thumbnail, title, publisher, price }: IProps) =>
   }, [])
 
   return (
-    <div title={id} itemID={id} className={cx(styles.data, isList && styles.list)}>
+    <div title={title} itemID={id} className={cx(styles.data, isList && styles.list)}>
       <img src={thumbnail} alt={title} onError={imgErrorHandler} />
       <div className={styles.metaData}>
         <p className={styles.bookTitle}>{title}</p>
