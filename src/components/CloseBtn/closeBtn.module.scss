@@ -1,0 +1,12 @@
+@use '/src/styles/constants/colors';
+
+.closeBtn {
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    color: colors.$GRAY7;
+  }
+}
