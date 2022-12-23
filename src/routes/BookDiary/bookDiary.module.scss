@@ -5,6 +5,29 @@
   .diaryWrapper {
     width: 100vw;
     height: 100vh;
+
+    .mobileOpenFormBtn {
+      @include flexbox.flexbox(center, center);
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: colors.$BACKGROUND_MOBILE;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px 0 rgba(colors.$BLACK, 15%);
+      transition: 0.1s;
+
+      &:hover {
+        background-color: rgba(colors.$BACKGROUND_MOBILE2, 50%);
+      }
+
+      svg {
+        width: 30px;
+        height: 30px;
+        color: colors.$BACKGROUND_MOBILE2;
+      }
+    }
   }
 }
 
@@ -14,5 +37,9 @@
     left: 250px;
     width: 80%;
     min-height: 100vh;
+
+    .mobileOpenFormBtn {
+      display: none;
+    }
   }
 }
