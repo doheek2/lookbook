@@ -5,6 +5,65 @@
   @include flexbox.columnFlexbox(center, center);
   width: 100vw;
   height: 100vh;
+
+  label { font-size: 15px; }
+
+  .searchBtnWrapper {
+    margin-bottom: 20px;
+
+    .searchBookBtn {
+      @include flexbox.flexbox(start, center);
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 10px;
+
+      svg {
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+      }
+
+      span { font-size: 15px; }
+    }
+  }
+
+  .selectedWrapper {
+    margin: 20px 0;
+
+    p {
+      font-size: 15px;
+      color: colors.$BLACK;
+    }
+
+    .box {
+      @include flexbox.flexbox(start, center);
+      margin-top: 10px;
+
+      .labelBtn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+
+        & + .labelBtn {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .addBtn {
+    width: 100%;
+    height: 55px;
+    font-size: 15px;
+    color: colors.$WHITE;
+    background-color: colors.$GREEN1;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: colors.$GREEN2;
+    }
+  }
 }
 
 @media screen and (max-width: 625px) {
@@ -20,72 +79,67 @@
     padding: 40px;
 
     label {
-      font-size: 15px;
       color: colors.$BLACK;
     }
 
     .searchBtnWrapper {
-      margin-bottom: 20px;
-
       .searchBookBtn {
-        @include flexbox.flexbox(start, center);
-        width: 100%;
-        padding: 10px;
-        font-size: 15px;
         color: colors.$BLACK;
         border: 1px solid colors.$GRAY7;
-        border-radius: 10px;
-
-        svg {
-          width: 17px;
-          height: 17px;
-          margin-right: 5px;
-          color: colors.$BLACK;
-        }
-
-        span {
-          font-size: 15px;
-          color: colors.$BLACK;
-        }
 
         &:hover,
         &:focus {
           border: 3px solid colors.$GREEN4;
         }
       }
+
+      svg { color: colors.$BLACK; }
+      span { color: colors.$BLACK; }
     }
 
-    .isShowDiaryWrapper {
-      margin: 20px 0;
-
-      p {
-        font-size: 15px;
-        color: colors.$BLACK;
-      }
-
-      .checkboxWrapper {
-        @include flexbox.flexbox(start, center);
-        margin-top: 10px;
-      }
-    }
-
-    .addBtn {
-      width: 100%;
-      height: 55px;
-      font-size: 15px;
-      color: colors.$WHITE;
-      background-color: colors.$GREEN1;
-      transition: 0.1s;
-
-      &:hover {
-        background-color: colors.$GREEN2;
-      }
+    .selectedWrapper {
+      p { color: colors.$BLACK; }
+      .labelBtn { border: 0.5px solid colors.$GRAY7; }
     }
   }
 }
 
 @media screen and (min-width: 625px) {
-  .mobileCloseBtn {
-    display: none;
+  .mobileCloseBtn { display: none; }
+
+  .webLogo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  .formWrapper {
+    width: 50vw;
+    height: 600px;
+    margin: 30px auto 0;
+
+    label { color: colors.$BACKGROUND_MOBILE3; }
+
+    .searchBtnWrapper {
+      .searchBookBtn {
+        height: 50px;
+        color: colors.$BACKGROUND_MOBILE3;
+        background-color: colors.$WHITE;
+        border: 1px solid colors.$BACKGROUND_MOBILE2;
+
+        &:hover,
+        &:focus {
+          border: 3px solid colors.$BACKGROUND_MOBILE2;
+        }
+
+        svg { color: colors.$BACKGROUND_MOBILE3; }
+        span { color: colors.$BACKGROUND_MOBILE3; }
+      }
+    }
+
+    .selectedWrapper {
+      p { color: colors.$BACKGROUND_MOBILE3; }
+      .labelBtn { border: 0.5px solid colors.$BACKGROUND_MOBILE2; }
+    }
   }
 }
