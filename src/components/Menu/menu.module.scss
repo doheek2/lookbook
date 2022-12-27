@@ -54,10 +54,6 @@
 }
 
 @media screen and (max-width: 625px) {
-  .logo {
-    display: none;
-  }
-
   .menuContainer {
     margin-top: 60px;
   }
@@ -77,11 +73,6 @@
 
     .logo {
       margin: 40px 0 0 20px;
-      font-family: Montserrat, sans-serif;
-      font-size: 25px;
-      font-weight: 600;
-      color: colors.$BLACK;
-      letter-spacing: 2px;
     }
 
     .menuContainer {
