@@ -1,0 +1,17 @@
+@use '/src/styles/constants/colors';
+
+@media screen and (max-width: 625px) {
+  .logo {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .logo {
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: colors.$BLACK;
+    letter-spacing: 2px;
+  }
+}
