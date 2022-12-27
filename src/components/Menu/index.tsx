@@ -1,12 +1,10 @@
-import { useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import DarkModeBtn from 'components/DarkModeBtn'
+import Logo from 'components/Logo'
 import NavItem from './NavItem'
 import SignItem from './SignItem'
+import useAuth from 'hooks/useAuth'
 
 import styles from './menu.module.scss'
-import useAuth from 'hooks/useAuth'
 
 const menus = ['main', 'bookdiary', 'lookbook', 'favorites']
 
@@ -15,18 +13,11 @@ interface IProps {
 }
 
 const Menu = ({ isMobile }: IProps) => {
-  const navigate = useNavigate()
   const { user } = useAuth()
-
-  const logoBtnClickHandler = useCallback(() => {
-    navigate('/')
-  }, [navigate])
 
   return (
     <nav className={styles.sideBarContainer}>
-      <button type='button' className={styles.logo} onClick={logoBtnClickHandler}>
-        LOOKBOOK
-      </button>
+      <Logo className={styles.logo} />
       <ul className={styles.menuContainer}>
         {menus.map((menu, i) => {
           const key = `menu${i}`
