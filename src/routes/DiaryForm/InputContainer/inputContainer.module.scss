@@ -1,38 +1,59 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
 
+.inputWrapper {
+  @include flexbox.columnFlexbox(start, start);
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  input[type='text'],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    color: colors.$BLACK;
+    border-radius: 10px;
+  }
+
+  input[type='text'] { height: 40px; }
+
+  textarea {
+    height: 170px;
+    resize: none;
+  }
+
+  & + .inputWrapper {
+    margin-top: 20px;
+  }
+}
+
 @media screen and (max-width: 625px) {
   .inputWrapper {
-    @include flexbox.columnFlexbox(start, start);
-
-    label {
-      margin-bottom: 10px;
-    }
-
     input[type='text'],
     textarea {
-      width: 100%;
-      padding: 10px;
-      font-size: 15px;
-      color: colors.$BLACK;
       border: 1px solid colors.$GRAY7;
-      border-radius: 10px;
 
       &:hover,
       &:focus {
         border: 3px solid colors.$GREEN4;
       }
     }
+  }
+}
 
-    input[type='text'] { height: 40px; }
-
+@media screen and (min-width: 625px) {
+  .inputWrapper {
+    input[type='text'],
     textarea {
-      height: 170px;
-      resize: none;
-    }
+      background-color: colors.$WHITE;
+      border: 1px solid colors.$BACKGROUND_MOBILE2;
 
-    & + .inputWrapper {
-      margin-top: 20px;
+      &:hover,
+      &:focus {
+        border: 3px solid colors.$BACKGROUND_MOBILE2;
+      }
     }
   }
 }
