@@ -1,15 +1,29 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
 
+.checkbox {
+  @include flexbox.flexbox(start, center);
+  width: 100px;
+  height: 30px;
+
+  label {
+    font-size: 15px;
+    color: colors.$BLACK;
+  }
+}
+
 @media screen and (max-width: 625px) {
   .checkbox {
-    @include flexbox.flexbox(start, center);
-    width: 100px;
-    height: 30px;
-
     label {
-      font-size: 15px;
       color: colors.$BLACK;
+    }
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .checkbox {
+    label {
+      color: colors.$BACKGROUND_MOBILE3;
     }
   }
 }
