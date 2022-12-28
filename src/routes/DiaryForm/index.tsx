@@ -13,7 +13,9 @@ const DiaryForm = () => {
   return (
     <main className={styles.diaryFormWrapper}>
       <Logo className={styles.webLogo} />
-      <CloseBtn className={styles.mobileCloseBtn} />
+      <div className={styles.topBar}>
+        <CloseBtn />
+      </div>
       {/* TODO: 수정 시 데이터 추가 */}
       {isEdit && <Form isEdit={isEdit} />}
       {!isEdit && <Form isEdit={isEdit} />}
