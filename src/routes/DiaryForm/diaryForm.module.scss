@@ -4,7 +4,6 @@
 .diaryFormWrapper {
   @include flexbox.columnFlexbox(center, center);
   width: 100vw;
-  height: 100vh;
 
   label { font-size: 15px; }
 
@@ -67,16 +66,19 @@
 }
 
 @media screen and (max-width: 625px) {
-  .mobileCloseBtn {
+  .topBar {
+    @include flexbox.flexbox(end, start);
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    width: 100vw;
+    height: 45px;
+    background-color: colors.$WHITE;
   }
 
   .formWrapper {
     width: 100vw;
-    height: 90vh;
-    padding: 40px;
+    height: 710px;
+    padding: 50px 40px 40px;
 
     label {
       color: colors.$BLACK;
@@ -100,12 +102,13 @@
     .selectedWrapper {
       p { color: colors.$BLACK; }
       .labelBtn { border: 0.5px solid colors.$GRAY7; }
+      .selected { border: 2px solid colors.$GREEN1; }
     }
   }
 }
 
 @media screen and (min-width: 625px) {
-  .mobileCloseBtn { display: none; }
+  .topBar { display: none; }
 
   .webLogo {
     position: absolute;
@@ -115,8 +118,8 @@
 
   .formWrapper {
     width: 50vw;
-    height: 600px;
-    margin: 30px auto 0;
+    height: 700px;
+    margin: 80px auto 0;
 
     label { color: colors.$BACKGROUND_MOBILE3; }
 
@@ -140,6 +143,7 @@
     .selectedWrapper {
       p { color: colors.$BACKGROUND_MOBILE3; }
       .labelBtn { border: 0.5px solid colors.$BACKGROUND_MOBILE2; }
+      .selected { border: 2px solid colors.$GREEN1; }
     }
   }
 }
