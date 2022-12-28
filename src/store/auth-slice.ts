@@ -1,9 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IUserState } from 'types/firebaseAuth'
-
-export interface IAuthState {
-  user: null | IUserState
-}
 
 const initialState = {
   user: null,
