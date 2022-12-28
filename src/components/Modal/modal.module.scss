@@ -1,0 +1,43 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/levels';
+
+.modal {
+  @include flexbox.flexbox(center, center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: levels.$BACKDROP;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop {
+  position: relative;
+  z-index: levels.$BACKDROP;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(colors.$BLACK, 20%);
+}
+
+.box {
+  position: absolute;
+  z-index: levels.$BOX;
+  padding: 40px;
+  background-color: colors.$WHITE;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 625px) {
+  .large {
+    width: 80vw;
+    height: 60vh;
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .large {
+    width: 70vw;
+    height: 80vh;
+  }
+}
