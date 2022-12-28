@@ -4,13 +4,13 @@ import styles from './checkboxContainer.module.scss'
 interface IProps {
   id: string
   text: string
+  value: number
 }
 
-// TODO: isChecked 변경
-const CheckboxContainer = ({ id, text }: IProps) => {
+const CheckboxContainer = ({ id, text, value }: IProps) => {
   return (
     <div className={styles.checkbox}>
-      <Check size='small' id={id} isChecked />
+      <Check size='small' id={id} value={value} />
       <label htmlFor={id}>{text}</label>
     </div>
   )
