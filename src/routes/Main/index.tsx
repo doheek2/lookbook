@@ -1,9 +1,7 @@
-import { ChangeEvent, FormEvent, Suspense, useCallback, useEffect, useState } from 'react'
-import { debounce } from 'lodash'
+import { FormEvent, Suspense, useCallback } from 'react'
 
-import { IKakaoAPI } from 'types/lookbook'
-import useKeywordQuery from 'hooks/useKeywordQuery'
 import useAuth from 'hooks/useAuth'
+import useSearchBook from 'hooks/useSearchBook'
 
 import Container from 'components/Container'
 import BookItem from 'components/BookItem'
@@ -13,24 +11,8 @@ import Recommendation from './Recommendation'
 import styles from './main.module.scss'
 
 const Main = () => {
-  const [books, setBooks] = useState<IKakaoAPI>([])
-  const [query, setQuery] = useState('')
-  const { data } = useKeywordQuery(query)
   const { user } = useAuth()
-
-  useEffect(() => {
-    if (query.length > 0 && data) setBooks(data.data.documents)
-    else setBooks([])
-  }, [data, query.length])
-
-  const debouncedSearch = debounce((searchText: string) => setQuery(searchText), 300)
-
-  const searchBookHandler = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      debouncedSearch(e.currentTarget.value)
-    },
-    [debouncedSearch]
-  )
+  const { books, query, searchBookHandler } = useSearchBook()
 
   const formSubmitHandler = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
